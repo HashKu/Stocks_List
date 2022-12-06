@@ -25,14 +25,13 @@ def create():
     buy_date = request.form['buy date']
     instructions.create(name, value, buy_date)
     return redirect("/")
-    return render_template('home.html', task=tasks) 
+
 
 @app.route('/delete/<id>')
 def delete(id):
     retorno = instructions.delete(id)
     tasks = instructions.load()
-    return render_template('home.html', tasks=tasks)
-
+    return redirect("/")
 
 @app.route('/update', methods=['POST'])
 def update():
